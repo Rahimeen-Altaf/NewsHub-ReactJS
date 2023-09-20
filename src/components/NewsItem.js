@@ -1,21 +1,68 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
 
 export class NewsItem extends Component {
+  
+  
   render() {
-    let {title, description, imageUrl, newsUrl} = this.props;
+    
+    let { title, description, imageUrl, newsUrl, author, date, source, category } = this.props;
+    const badgeColor = () => {
+      switch (category) {
+        case 'sports':
+          return 'primary';
+        case 'science':
+          return 'warning';
+        case 'technology':
+          return 'secondary';
+        case 'business':
+          return 'info';
+        case 'general':
+          return 'danger';
+        case 'health':
+          return 'success';
+        default:
+          return 'primary';
+      }
+    };
     return (
-      <div className='my-3'>
+      <div className="my-3">
         <div className="card">
-            <img src={!imageUrl?"https://media.cnn.com/api/v1/images/stellar/prod/230918191320-alabama-band-director-tased-arrested-091823.jpg?c=16x9&q=w_800,c_fill": imageUrl} className="card-img-top" alt="..."/>
-            <div className="card-body">
-                <h5 className="card-title">{title}...</h5>
-                <p className="card-text">{description}...</p>
-                <a href={newsUrl} target='_blank' className="btn btn-sm btn-dark" rel="noreferrer">Read More</a>
-            </div>
+        <span className={`position-absolute top-0 translate-middle badge rounded-pill bg-${badgeColor(category)}`} style={{left: '90%', zIndex: '1'}}>
+              {source}
+              </span>
+          <img
+            src={
+              !imageUrl
+                ? "https://media.cnn.com/api/v1/images/stellar/prod/230918191320-alabama-band-director-tased-arrested-091823.jpg?c=16x9&q=w_800,c_fill"
+                : imageUrl
+            }
+            className="card-img-top"
+            alt="..."
+          />
+          <div className="card-body">
+            <h5 className="card-title">
+              {title}...
+            </h5>
+            <p className="card-text">{description}...</p>
+            <p className="card-text">
+              <small className="text-body-secondary">
+                By {!author ? "unknown" : author} on{" "}
+                {new Date(date).toGMTString()}
+              </small>
+            </p>
+            <a
+              href={newsUrl}
+              target="_blank"
+              className="btn btn-sm btn-dark"
+              rel="noreferrer"
+            >
+              Read More
+            </a>
+          </div>
         </div>
       </div>
-    )
+    );
   }
 }
 
-export default NewsItem
+export default NewsItem;
