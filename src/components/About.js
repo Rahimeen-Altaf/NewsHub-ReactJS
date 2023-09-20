@@ -1,5 +1,5 @@
 export default function About(props) {
-    
+    document.title = 'NewsHub - About';
     let myStyle = {
         color: 'dark',
         backgroundColor: 'white'
