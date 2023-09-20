@@ -5,11 +5,10 @@ export class NavBar extends Component {
     constructor() {
       super();
       this.state = {
-          activeLink: 'home', // Default active link is 'home'
+          activeLink: 'home',
       };
   }
 
-  // Function to set the active link when a link is clicked
   setActiveLink = (link) => {
       this.setState({ activeLink: link });
   }
