@@ -15,7 +15,7 @@ import PropTypes from 'prop-types'
         };
     };
 
-    static defaultProp = {
+    static defaultProps = {
         country: 'in',
         pageSize: 8,
         apiKey: 'c5ea547c0beb4519aa1ab749b0b57ae2',
